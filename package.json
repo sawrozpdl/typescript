@@ -1,0 +1,19 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "go": "tsc ./practice/main.ts && node ./practice/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sawrozpdl/typescript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sawrozpdl/typescript/issues"
+  },
+  "homepage": "https://github.com/sawrozpdl/typescript#readme"
+}
