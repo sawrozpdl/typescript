@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "go": "tsc ./practice/main.ts && node ./practice/main.js"
+    "go": "tsc ./practice/main.ts && node ./practice/main.js",
+    "test": "tsc ./practice/utils/Utils.ts && node ./practice/utils/Utils.js"
   },
   "repository": {
     "type": "git",

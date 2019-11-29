@@ -7,13 +7,11 @@ import TeacherService from './services/TeacherService';
 let stsrvc :StudentService = new StudentService();
 let tcsrvc :TeacherService = new TeacherService();
 
+let t1: Teacher = new Teacher('Ramlal', 21);
+let t2: Teacher = new Teacher('Shyamlal', 33);
 
-
-let t1 = new Teacher('Ramlal', 21);
-let t2 = new Teacher('Shyamlal', 33);
-
-let s1 = new Student('raghav', 11, ['social', 'nepali']);
-let s2 = new Student('mike', 13, ['computer', 'english']);
+let s1: Student = new Student('raghav', 11, ['social', 'nepali']);
+let s2: Student = new Student('mike', 13, ['computer', 'english']);
 
 stsrvc.add(s1);
 stsrvc.add(s2);
