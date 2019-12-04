@@ -115,7 +115,7 @@ function balanceStatements(list: string): string {
  
 ////=-------------------
 
-function swap(arr, ind1, ind2) {
+function swap(arr, ind1, ind2):void {
     let temp = arr[ind1];
     arr[ind1] = arr[ind2];
     arr[ind2] = temp;
@@ -141,10 +141,63 @@ export function bSearch(array, start, end, value):boolean {
     return bSearch(array, mid + 1, end, value);
 }
 
-let array = [3, 2, 1, 32, 12, 7, 56];
+let array:number[] = [3, 2, 1, 32, 12, 7, 56];
 sort<number>(array, function (left: number, right: number) {
     return (left < right);
 });
+
+
+
+
+interface position {
+    x:number,
+    y:number
+}
+
+function getStartCoordinates(maze:number[][], number:number):position {
+    for (let i = 0; i < maze.length;i++) {
+        for (let j = 0; j < maze.length;j++) {
+            if (maze[i][j] == number)
+                return {x : j, y : i}
+        }
+    }
+    return {x : -1, y: -1}
+}
+
+export function mazeRunner(maze:number[][], directions:string[]): string{
+    let player:position = getStartCoordinates(maze, 2);
+    console.log(player);
+    for (let dir of directions) {
+        switch(dir) {
+            case 'N':
+                player.y -= 1;
+                break;
+            case 'S':
+                player.y += 1;
+                break;
+            case 'E':
+                player.x += 1;
+                break;
+            case 'W':
+                player.x -= 1;
+                break; 
+        }
+        if (maze[player.y][player.x] == 3) return 'Finish'
+        else if (player.x < 0 || player.x >= maze.length || player.y < 0 || player.y >= maze.length || maze[player.y][player.x] != 0) return 'Dead'
+    }
+    return 'Lost';
+}
+
+let maze:number[][] = 
+           [[1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,3],
+            [1,0,1,0,1,0,1],
+            [0,0,1,0,0,0,1],
+            [1,0,1,0,1,0,1],
+            [1,0,0,0,0,0,1],
+            [1,2,1,0,1,0,1]];
+
+console.log(mazeRunner(maze,["N","N","N","N","N","E","E","E","E","E"]));
 console.log(array);
 console.log(bSearch(array, 0,array.length - 1, 9));
 

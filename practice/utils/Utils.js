@@ -138,6 +138,50 @@ var array = [3, 2, 1, 32, 12, 7, 56];
 sort(array, function (left, right) {
     return (left < right);
 });
+function getStartCoordinates(maze, number) {
+    for (var i = 0; i < maze.length; i++) {
+        for (var j = 0; j < maze.length; j++) {
+            if (maze[i][j] == number)
+                return { x: j, y: i };
+        }
+    }
+    return { x: -1, y: -1 };
+}
+function mazeRunner(maze, directions) {
+    var player = getStartCoordinates(maze, 2);
+    console.log(player);
+    for (var _i = 0, directions_1 = directions; _i < directions_1.length; _i++) {
+        var dir = directions_1[_i];
+        switch (dir) {
+            case 'N':
+                player.y -= 1;
+                break;
+            case 'S':
+                player.y += 1;
+                break;
+            case 'E':
+                player.x += 1;
+                break;
+            case 'W':
+                player.x -= 1;
+                break;
+        }
+        if (maze[player.y][player.x] == 3)
+            return 'Finish';
+        else if (player.x < 0 || player.x >= maze.length || player.y < 0 || player.y >= maze.length || maze[player.y][player.x] != 0)
+            return 'Dead';
+    }
+    return 'Lost';
+}
+exports.mazeRunner = mazeRunner;
+var maze = [[1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 3],
+    [1, 0, 1, 0, 1, 0, 1],
+    [0, 0, 1, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 1],
+    [1, 2, 1, 0, 1, 0, 1]];
+console.log(mazeRunner(maze, ["N", "N", "N", "N", "N", "E", "E", "E", "E", "E"]));
 console.log(array);
 console.log(bSearch(array, 0, array.length - 1, 9));
 console.log(balanceStatements("ZNGA 1300 2.66, CLH15.NYM 50 56.32 S, OWW 1000 11.623 S, OGG 20 580.1 S"));
